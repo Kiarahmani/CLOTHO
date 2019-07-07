@@ -1,1 +1,5 @@
 /target/
+analyzer/z3-encoding.smt2
+analyzer/anomalies/
+analyzer/bin/
+analyzer/sootOutput/
