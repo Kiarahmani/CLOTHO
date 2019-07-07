@@ -21,46 +21,126 @@ if [ $# == 0 ] ; then
     exit 1;
 fi
 
-while getopts ":i:vh" optname
-  do
-    case "$optname" in
-      "v")
-        echo "Version $VERSION"
-        exit 0;
-        ;;
-      "a")
-        echo "-i argument: $OPTARG"
-        ;;
-      "v")
-        echo "-i argument: $OPTARG"
-        ;;
-      "h")
-        echo $USAGE
-        exit 0;
-        ;;
-      "?")
-        echo "Unknown option $OPTARG"
-        exit 0;
-        ;;
-      ":")
-        echo "No argument value for option $OPTARG"
-        exit 0;
-        ;;
-      *)
-        echo "Unknown error while processing options"
-        exit 0;
-        ;;
-    esac
-  done
-
-shift $(($OPTIND - 1))
-
-param1=$1
-param2=$2
 
 
-# --- Body --------------------------------------------------------
-#  SCRIPT LOGIC GOES HERE
-echo $param1
-echo $param2
+
+# FUNCTIONS
 # -----------------------------------------------------------------
+visualize () {
+  echo ">> visualizing anomaly #${ANML_NO} from ${BENCHMARK}"
+}
+# -----------------------------------------------------------------
+analyze () {
+  echo ">> analyzing benchmark ${BENCHMARK}"
+}
+# -----------------------------------------------------------------
+client () {
+  echo "running a client"
+}
+# -----------------------------------------------------------------
+drive () {
+  echo "running the scheduler"
+}
+# -----------------------------------------------------------------
+setup () {
+  echo "setting up the clusters and intializing them"
+}
+
+
+
+
+
+# BODY 
+# -----------------------------------------------------------------
+
+BENCHMARK=$2
+
+while [[ $# -gt 0 ]]
+do
+KEY="$1"
+
+case $KEY in
+    -v|--version)
+    echo $VERSION
+    shift # past argument
+    ;;
+    -a|--analyze)
+    analyze
+    shift # past argument
+    shift # past value
+    ;;
+    -d|--drive)
+    ANML_NO=$3
+    DELAY=$4
+    drive
+    shift # past argument
+    shift # past value
+    shift # past value
+    shift # past value
+    ;;
+    -c|--client)
+    ANML_NO=$3
+    CLIENT_NO=$4
+    client
+    shift # past argument
+    shift # past value
+    ;;
+    -s|--setup)
+    setup
+    shift # past argument
+    shift # past value
+    ;;
+    -z|--visualize)
+    ANML_NO=$3
+    visualize
+    shift # past argument
+    shift # past value
+    shift # past value
+    ;;
+    --default)
+    DEFAULT=YES
+    shift # past argument
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    echo $USAGE
+    shift # past argument
+    shift # past argument
+    shift # past argument
+    ;;
+esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
