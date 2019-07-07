@@ -32,6 +32,7 @@ visualize () {
 # -----------------------------------------------------------------
 analyze () {
   echo ">> analyzing benchmark ${BENCHMARK}"
+  sed  -e 's/__BN__/'$BENCHMARK'/g' templates/config.properties > analyzer/config.properties
 }
 # -----------------------------------------------------------------
 client () {
@@ -45,7 +46,10 @@ drive () {
 setup () {
   echo "setting up the clusters and intializing them"
 }
-
+# -----------------------------------------------------------------
+clean () {
+  rm analyzer/config.properties
+}
 
 
 
