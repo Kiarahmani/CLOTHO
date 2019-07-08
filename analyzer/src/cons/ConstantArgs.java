@@ -58,9 +58,9 @@ public class ConstantArgs {
 					.parseBoolean(prop.getProperty("_ENFORCE_ROW_INSTANCE_LIMITS", "false"));
 			ConstantArgs._Minimum_Cycle_Length = Integer.parseInt(prop.getProperty("_Minimum_Cycle_Length", "3"));
 			ConstantArgs._MAX_CYCLE_LENGTH = Integer.parseInt(prop.getProperty("_MAX_CYCLE_LENGTH", "3"));
-			ConstantArgs._NO_WW = Boolean.parseBoolean(prop.getProperty("_NO_WW", "false"));
-			ConstantArgs._NO_RW = Boolean.parseBoolean(prop.getProperty("_NO_RW", "false"));
-			ConstantArgs._NO_WR = Boolean.parseBoolean(prop.getProperty("_NO_WR", "false"));
+			ConstantArgs._NO_WW = true; //Boolean.parseBoolean(prop.getProperty("_NO_WW", "false"));
+			ConstantArgs._NO_RW = false; //Boolean.parseBoolean(prop.getProperty("_NO_RW", "false"));
+			ConstantArgs._NO_WR = false; //Boolean.parseBoolean(prop.getProperty("_NO_WR", "false"));
 			ConstantArgs._MAX_TXN_INSTANCES = Integer.parseInt(prop.getProperty("_MAX_TXN_INSTANCES", "-1"));
 
 			ConstantArgs._ENFORCE_OPTIMIZED_ALGORITHM = Boolean
