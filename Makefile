@@ -1,6 +1,11 @@
 .PHONY: replayer driver analyzer
 
-all: driver replayer analyzer 
+all: init driver replayer analyzer 
+
+
+init: 
+	rm -rf ./tests
+	mkdir tests
 
 
 script: 
@@ -25,4 +30,5 @@ clean:
 	cd replayer; mvn clean
 	cd driver; mvn clean
 	cd analyzer; ant clean
+	rm -rf ./tests
 
