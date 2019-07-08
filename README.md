@@ -3,8 +3,8 @@ description of the tool
 
 dependencies
 
-
-#### Setup
+---
+### Setup
 ``` sh
 git clone https://github.com/Kiarahmani/CLOTHO.git
 ```
@@ -18,7 +18,7 @@ You can verify that the cluster is correctly set up by running:
 ```
 
 
-#### Static Analysis 
+### Static Analysis 
 You should choose a <benchmark_name> from pre-defined examples {dirty_read, dirty_write} or implement your own (more information below).
 Following command will comiple the source codes, including the application under test:
 ``` sh
@@ -33,7 +33,7 @@ Once the analysis finishes, CLOTHO will report the number of static anomalies fo
 You can view anomaly <anomaly_number> by running: 
 ./clotho.sh --show <benchmark_name> <anomaly_number>
 
-#### Replaying Anomalies
+### Replaying Anomalies
 Following command will create proper keyspace and required schema on the Cassandra cluster:
 ```sh
 ./clotho.sh --init <benchmark_name> <anomaly_number>
@@ -47,8 +47,8 @@ Finally, run the following command at each client terminal:
 ```sh
 ./clotho.sh --client <benchmark_name> <anomaly_number> <client_number>
 ```
-
-### Publications
+---
+## Publications
 - CLOTHO: Directed Test Generation for Weakly Consistent Database Systems (Conditionally Accepted to [OOPSLA'19](https://conf.researchr.org/track/splash-2019/splash-2019-oopsla#event-overview))
 
 
