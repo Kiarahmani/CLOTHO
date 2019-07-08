@@ -1,9 +1,24 @@
 ### CLOTHO:  Directed Test Generation for Weakly Consistent Database Systems
-description of the tool
-
-dependencies
+CLOTHO is a testing framework for detecting serializability
+violations in (SQL) database-backed Java applications executing on weakly-consistent storage systems. It 
+combines a static analyzer and model checker to generate abstract executions, discover 
+serializability violations in these executions, and translate them back into concrete test inputs suitable 
+for deployment in a test environment.
+CLOTHO currently supports [Apache Cassandra](http://cassandra.apache.org/) as
+its database module. We are planning to add support for more databases in the
+future. 
 
 ---
+
+### Dependencies 
+- [Java 1.8.0](https://java.com/en/download/help/index_installing.xml)
+- [Z3 Theorem Prover](https://github.com/Z3Prover/z3)
+- [Docker](https://www.docker.com/)
+
+
+
+---
+
 ### Setup
 ``` sh
 git clone https://github.com/Kiarahmani/CLOTHO.git
