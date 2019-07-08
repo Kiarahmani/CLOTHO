@@ -41,7 +41,7 @@ client () {
   echo "running a client"
   cp analyzer/anomalies/$BENCHMARK/anomaly#$ANML_NO/instance.json ./tests/
   cd replayer
-  mvn exec:java -Dexec.args="1 SmallBank 1" -e
+  mvn exec:java -Dexec.args="$CLIENT_NO"  -e 
   cd -
 }
 # -----------------------------------------------------------------
@@ -49,28 +49,33 @@ drive () {
   echo "running the scheduler"
   cp analyzer/anomalies/$BENCHMARK/anomaly#$ANML_NO/schedule.json ./tests/
   cd driver/target/classes
-  java sync.Scheduler true 100 SmallBank 1
+  java sync.Scheduler 100 
   cd -
 }
 # -----------------------------------------------------------------
 setup () {
   echo "setting up the clusters and intializing them"
-  # TODO: are hard-coded for system under test - must be generalized
-  export CLOTHO_RT_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
-  export CLOTHO_JCE_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar
-
+  . scripts/env.sh	
 }
 
 # -----------------------------------------------------------------
 init () {
   echo "setting up the clusters and intializing them"
+  cp analyzer/src/benchmarks/$BENCHMARK/schema.cql tests
+  cp analyzer/anomalies/$BENCHMARK/anomaly#$ANML_NO/$ANML_NO.cql ./tests/init.cql
+  # copy and execute schema file on the Cassandra cluster
+  docker cp tests/schema.cql cas1:/tmp/
+  docker  exec -ti cas1 cqlsh -f "/tmp/schema.cql"
+  # copy and execute intial database state 
+  docker cp tests/init.cql cas1:/tmp/
+  docker  exec -ti cas1 cqlsh -f "/tmp/init.cql"
+
 }
 
 # -----------------------------------------------------------------
 clean () {
   rm analyzer/config.properties
-  rm tests/schedule.json
-  rm tests/instance.json
+  rm tests/*
 }
 
 
@@ -114,6 +119,13 @@ case $KEY in
     -s|--setup)
     setup
     shift # past argument
+    shift # past value
+    ;;
+    -i|--init)
+    ANML_NO=$3
+    init
+    shift # past argument
+    shift # past value
     shift # past value
     ;;
     -z|--visualize)

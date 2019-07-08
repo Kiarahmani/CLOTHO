@@ -12,7 +12,7 @@ import sync.OpType;
 public final class DR_schedule {
 	ArrayList<OpType> execOrder;
 
-	public DR_schedule(String benchmarkName, int testNumber) {
+	public DR_schedule() {
 		execOrder = new ArrayList<OpType>();
 
 		// read and par the test config file

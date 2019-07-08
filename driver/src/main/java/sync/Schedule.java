@@ -20,10 +20,10 @@ public class Schedule implements RemoteService {
 	private long begin;
 
 
-	public Schedule(int delay, boolean shouldEnforce, String benchmarkName, int testNumber) {
+	public Schedule(int delay, boolean shouldEnforce) {
 		this.begin = System.currentTimeMillis();
 		this.seqIndex = 0;
-		this.execOrder = new DR_schedule(benchmarkName,testNumber).getSchedule(); 
+		this.execOrder = new DR_schedule().getSchedule(); 
 		this._SHOULD_ENFORCE = shouldEnforce;
 		this._DATABASE_DELAY = delay;
 	}

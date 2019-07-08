@@ -57,12 +57,12 @@ public class Client {
 
 	public void two_writes(Long key) throws SQLException {
 		PreparedStatement stmt1 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
-		stmt1.setInt(1, 50);
+		stmt1.setLong(1, 50);
 		stmt1.setLong(2, key);
 		stmt1.executeUpdate();
 
-		PreparedStatement stmt2 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
-		stmt2.setInt(1, 100);
+		PreparedStatement stmt2 = connect.prepareStatement("UPDATE ACCOUNTS  SET value = ?" + " WHERE id = ?");
+		stmt2.setLong(1, 100);
 		stmt2.setLong(2, key);
 		stmt2.executeUpdate();
 	}

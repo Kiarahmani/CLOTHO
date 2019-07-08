@@ -22,7 +22,7 @@ public class Transaction {
 	private Object[] argsArray;
 
 	// constructor
-	public Transaction(int id, String benchmark, int testNumber) {
+	public Transaction(int id) {
 		this.id = id;
 		client = new Client(id);
 		// read the test config file
