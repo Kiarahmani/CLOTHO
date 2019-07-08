@@ -143,7 +143,7 @@ case $KEY in
     shift # past value
     shift # past value
     ;;
-    -i|--info)
+    -i|--cluster)
     docker exec -ti cas1 nodetool status
     shift # past argument
     ;;
