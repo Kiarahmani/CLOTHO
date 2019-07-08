@@ -5,7 +5,7 @@ combines a static analyzer and model checker to generate abstract executions, di
 serializability violations in these executions, and translate them back into concrete test inputs suitable 
 for deployment in a test environment.
 CLOTHO currently supports [Apache Cassandra](http://cassandra.apache.org/) as
-its database module. We are planning to add support for more databases in the
+its database module. We are planning to add support for other databases in the
 future. 
 
 ---
@@ -16,14 +16,18 @@ future.
 - [Docker](https://www.docker.com/)
 
 
-
+ 
 ---
 
 ### Setup
+Create a local repo of the project:
 ``` sh
 git clone https://github.com/Kiarahmani/CLOTHO.git
 ```
-Move to the directory `cd CLOTHO` and run the following command:
+Make sure docker daemon is running and current user is added to docker group and has privileges ([read more](https://docs.docker.com/install/linux/linux-postinstall/)). 
+
+Move to the project directory and run the following command to create a cluster
+of 2 Cassandra nodes each running in a docker container: 
 ``` sh
 ./clotho.sh --setup 2
 ```
@@ -31,6 +35,9 @@ You can verify that the cluster is correctly set up by running:
 ```sh 
 ./clotho.sh --cluster
 ```
+You should see something like: 
+
+
 
 
 ### Static Analysis 
