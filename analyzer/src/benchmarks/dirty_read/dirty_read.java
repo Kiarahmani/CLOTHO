@@ -33,9 +33,9 @@ public class dirty_read {
 		}
 	}
 
-	public void one_read(int key) throws SQLException {
+	public void one_read(long key) throws SQLException {
 		PreparedStatement stmt = connect.prepareStatement("SELECT value " + "FROM " + "ACCOUNTS" + " WHERE id = ?");
-		stmt.setInt(1, key);
+		stmt.setLong(1, key);
 		ResultSet rs = stmt.executeQuery();
 		rs.next();
 		int read_val = rs.getInt("VALUE");
@@ -43,15 +43,15 @@ public class dirty_read {
 		System.out.println(read_val);
 	}
 
-	public void two_writes(int key) throws SQLException {
+	public void two_writes(long key) throws SQLException {
 		PreparedStatement stmt1 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
 		stmt1.setInt(1, 50);
-		stmt1.setInt(2, key);
+		stmt1.setLong(2, key);
 		stmt1.executeUpdate();
 
 		PreparedStatement stmt2 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
 		stmt2.setInt(1, 100);
-		stmt2.setInt(2, key);
+		stmt2.setLong(2, key);
 		stmt2.executeUpdate();
 	}
 }
