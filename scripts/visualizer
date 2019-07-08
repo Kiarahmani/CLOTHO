@@ -1,0 +1,55 @@
+#!/bin/bash
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -g|--generate)
+    DIR="$2"
+    for filename in $DIR/*/*.dot; do
+      dot -Tpng  $filename -o "${filename}.png" 
+    done
+    echo "${DIR} successfully generated" 
+    shift # past argument
+    shift # past value
+    ;;
+    -o|--open)
+    DIR="$2"
+    ANMLNO="$3"
+    for filename in "${DIR}/anomaly\#${ANMLNO}/*_${ANMLNO}.dot.png"; do
+      xdg-open $filename
+    done
+    shift # past argument
+    shift # past value
+    ;;
+    -go|--genop)
+    DIR="$2"
+    ANMLNO="$3"
+    for filename in $DIR/*/*.dot; do
+      dot -Tpng  $filename -o "${filename}.png" 
+    done
+    echo "${DIR} successfully generated" 
+    for filename in "${DIR}/anomaly\#${ANMLNO}/anom*_*.dot.png"; do
+      xdg-open $filename
+    done
+    shift # past argument
+    shift # past value
+    ;;
+    --default)
+    DEFAULT=YES
+    shift # past argument
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+
+
+
+
+
