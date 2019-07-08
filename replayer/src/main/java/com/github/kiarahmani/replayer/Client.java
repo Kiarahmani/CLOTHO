@@ -45,7 +45,7 @@ public class Client {
 		}
 	}
 
-	public void one_read(long key) throws SQLException {
+	public void one_read(Long key) throws SQLException {
 		PreparedStatement stmt = connect.prepareStatement("SELECT value " + "FROM " + "ACCOUNTS" + " WHERE id = ?");
 		stmt.setLong(1, key);
 		ResultSet rs = stmt.executeQuery();
@@ -55,7 +55,7 @@ public class Client {
 		System.out.println(read_val);
 	}
 
-	public void two_writes(long key) throws SQLException {
+	public void two_writes(Long key) throws SQLException {
 		PreparedStatement stmt1 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
 		stmt1.setInt(1, 50);
 		stmt1.setLong(2, key);
