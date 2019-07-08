@@ -27,7 +27,7 @@ public class Transaction {
 		client = new Client(id);
 		// read the test config file
 		JSONParser jsonParser = new JSONParser();
-		try (FileReader reader = new FileReader("config/" + benchmark + "/" + testNumber + "/instance.json")) {
+		try (FileReader reader = new FileReader("../tests/instance.json")) {
 			// Read JSON file
 			Object obj = jsonParser.parse(reader);
 			JSONArray txnList = (JSONArray) obj;

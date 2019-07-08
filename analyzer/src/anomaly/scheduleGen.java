@@ -89,7 +89,7 @@ public class scheduleGen {
 				inner_delim = ",";
 			}
 			printer.append("]");
-			printer.append("}");
+			printer.append("}}");
 			delim = ",";
 		}
 		printer.append("\n]");
@@ -144,7 +144,7 @@ public class scheduleGen {
 		for (Integer time : result.keySet())
 			printer.append(result.get(time) + "\n");
 		// EOF marker
-		printer.append("-99, \"\", \"\", -99");
+		printer.append("-99,\"\",\"\",-99");
 		printer.flush();
 
 	}

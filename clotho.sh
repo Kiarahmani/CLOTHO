@@ -33,14 +33,24 @@ visualize () {
 analyze () {
   echo ">> analyzing benchmark ${BENCHMARK}"
   sed  -e 's/__BN__/'$BENCHMARK'/g' templates/config.properties > analyzer/config.properties
+  ant Transformer -f analyzer/
+  clean
 }
 # -----------------------------------------------------------------
 client () {
   echo "running a client"
+  cp analyzer/anomalies/$BENCHMARK/anomaly#$ANML_NO/instance.json ./tests/
+  cd replayer
+  mvn exec:java -Dexec.args="1 SmallBank 1" -e
+  cd -
 }
 # -----------------------------------------------------------------
 drive () {
   echo "running the scheduler"
+  cp analyzer/anomalies/$BENCHMARK/anomaly#$ANML_NO/schedule.json ./tests/
+  cd driver/target/classes
+  java sync.Scheduler true 100 SmallBank 1
+  cd -
 }
 # -----------------------------------------------------------------
 setup () {
@@ -49,6 +59,8 @@ setup () {
 # -----------------------------------------------------------------
 clean () {
   rm analyzer/config.properties
+  rm tests/schedule.json
+  rm tests/instance.json
 }
 
 

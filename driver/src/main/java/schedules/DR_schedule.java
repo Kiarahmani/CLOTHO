@@ -18,7 +18,7 @@ public final class DR_schedule {
 		// read and par the test config file
 		// JSONParser jsonParser = new JSONParser();
 		try {
-			FileReader reader = new FileReader("../../config/" + benchmarkName + "/" + testNumber + "/schedule.json");
+			FileReader reader = new FileReader("../../../tests/schedule.json");
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			StringBuffer stringBuffer = new StringBuffer();
 			String line;
