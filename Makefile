@@ -1,6 +1,11 @@
 .PHONY: replayer driver analyzer
 
-all: driver replayer analyzer
+all: driver replayer analyzer 
+
+
+script: 
+	cp scripts/clotho.sh ./
+	chmod +x clotho.sh
 
 
 replayer: 
