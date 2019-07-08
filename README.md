@@ -8,6 +8,10 @@ CLOTHO currently supports [Apache Cassandra](http://cassandra.apache.org/) as
 its database module. We are planning to add support for other databases in the
 future. 
 
+<img src="readme/pipeline.png"
+     alt="Markdown Monster icon"
+     style="float: center; margin-left: 15px; margin-bottom: 20px" />
+
 ---
 
 ### Dependencies 
@@ -79,6 +83,7 @@ Now you can view anomaly <anomaly_number> by running:
 ./clotho.sh --show <benchmark_name> <anomaly_number>
 ```
 For example:
+
 ![alt text](https://raw.githubusercontent.com/Kiarahmani/CLOTHO/master/readme/anomaly_1.dot.png "Dirty Read Anomaly")
 
 
