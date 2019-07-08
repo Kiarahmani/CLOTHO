@@ -8,7 +8,8 @@ script:
 	chmod +x clotho.sh
 
 
-replayer: 
+replayer:
+	cp replayer/src/main/java/com/github/kiarahmani/replayer/client_templates/$(benchmark).template replayer/src/main/java/com/github/kiarahmani/replayer/Client.java
 	cd replayer; mvn compile
 
 driver: 
