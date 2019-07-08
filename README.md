@@ -78,6 +78,9 @@ Now you can view anomaly <anomaly_number> by running:
 ```sh
 ./clotho.sh --show <benchmark_name> <anomaly_number>
 ```
+For example:
+![alt text](https://raw.githubusercontent.com/Kiarahmani/CLOTHO/master/readme/anomaly_1.dot.png "Dirty Read Anomaly")
+
 
 
 ### Replaying Anomalies
