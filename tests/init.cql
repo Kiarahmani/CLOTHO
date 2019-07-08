@@ -1,3 +1,0 @@
-
-INSERT INTO testks.ACCOUNTS(id,value) VALUES(7,2);
-INSERT INTO testks.ACCOUNTS(id,value) VALUES(7,1);
