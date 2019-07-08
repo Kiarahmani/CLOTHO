@@ -55,7 +55,13 @@ drive () {
 # -----------------------------------------------------------------
 setup () {
   echo "setting up the clusters and intializing them"
-  . scripts/env.sh	
+  . scripts/env.sh
+  docker container stop $(docker ps -q)
+  docker rm $(docker ps -aq)
+  sleep 5
+  docker run --name cas1 -p 19041:9042 -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=DC1 -e CASSANDRA_RACK=RAC1 -d cassandra
+  sleep 20
+  docker run --name cas2 -p 19042:9042 -e CASSANDRA_SEEDS=172.17.0.2 -e CASSANDRA_CLUSTER_NAME=MyCluster -e CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch -e CASSANDRA_DC=DC2 -e CASSANDRA_RACK=RAC2 -d cassandra
 }
 
 # -----------------------------------------------------------------
@@ -117,6 +123,7 @@ case $KEY in
     shift # past value
     ;;
     -s|--setup)
+    CLUSTER_SIZE=$3
     setup
     shift # past argument
     shift # past value
