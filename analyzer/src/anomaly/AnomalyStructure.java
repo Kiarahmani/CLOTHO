@@ -43,20 +43,26 @@ public class AnomalyStructure {
 			Files.write(Paths.get("anomalies/" + ConstantArgs._BENCHMARK_NAME + "/results.csv"),
 					(line + "\n").getBytes(), StandardOpenOption.APPEND);
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 
 	}
 
 	// TODO
-	public void save() throws IOException {
+	public void save() throws IOException  {
 		File oldFile = new File("anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
 		oldFile.delete();
-		FileOutputStream fout = new FileOutputStream(
-				"anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
-		ObjectOutputStream oos = new ObjectOutputStream(fout);
-		oos.writeObject(this.structures);
-		oos.close();
+		FileOutputStream fout;
+		try {
+			fout = new FileOutputStream(
+					"anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
+			ObjectOutputStream oos = new ObjectOutputStream(fout);
+			oos.writeObject(this.structures);
+			oos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 
 	}
 
