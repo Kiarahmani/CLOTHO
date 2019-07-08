@@ -45,24 +45,16 @@ public class Client {
 		}
 	}
 
-	public void one_read(Long key) throws SQLException {
+		public void one_increment(Long key, Long amount) throws SQLException {
 		PreparedStatement stmt = connect.prepareStatement("SELECT value " + "FROM " + "ACCOUNTS" + " WHERE id = ?");
 		stmt.setLong(1, key);
 		ResultSet rs = stmt.executeQuery();
 		rs.next();
-		int read_val = rs.getInt("VALUE");
-		assert (read_val == 100);
+		Long read_val = rs.getLong("VALUE");
 		System.out.println(read_val);
-	}
 
-	public void two_writes(Long key) throws SQLException {
-		PreparedStatement stmt1 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
-		stmt1.setLong(1, 50);
-		stmt1.setLong(2, key);
-		stmt1.executeUpdate();
-
-		PreparedStatement stmt2 = connect.prepareStatement("UPDATE ACCOUNTS  SET value = ?" + " WHERE id = ?");
-		stmt2.setLong(1, 100);
+		PreparedStatement stmt2 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
+		stmt2.setLong(1, read_val + amount);
 		stmt2.setLong(2, key);
 		stmt2.executeUpdate();
 	}

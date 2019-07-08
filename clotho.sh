@@ -142,6 +142,10 @@ case $KEY in
     shift # past value
     shift # past value
     ;;
+    -s|--status)
+    docker exec -ti cas1 nodetool status
+    shift # past argument
+    ;;
     --default)
     DEFAULT=YES
     shift # past argument
