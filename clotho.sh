@@ -26,8 +26,9 @@ fi
 
 # FUNCTIONS
 # -----------------------------------------------------------------
-visualize () {
+show () {
   echo ">> visualizing anomaly #${ANML_NO} from ${BENCHMARK}"
+  ./scripts/visualizer -go analyzer/anomalies/$BENCHMARK $ANML_NO
 }
 # -----------------------------------------------------------------
 analyze () {
@@ -135,14 +136,14 @@ case $KEY in
     shift # past value
     shift # past value
     ;;
-    -z|--visualize)
+    -w|--show)
     ANML_NO=$3
-    visualize
+    show  
     shift # past argument
     shift # past value
     shift # past value
     ;;
-    -s|--status)
+    -i|--cluster)
     docker exec -ti cas1 nodetool status
     shift # past argument
     ;;

@@ -55,7 +55,7 @@ public class Client {
 		System.out.println(read_val1);
 
 		// read account 2
-		PreparedStatement stmt2 = connect.prepareStatement("SELECT value " + "FROM " + "ACCOUNTS" + " WHERE id = ?");
+		PreparedStatement stmt2 = connect.prepareStatement(" SELECT  value " + "FROM " + "ACCOUNTS" + " WHERE id = ?");
 		stmt2.setLong(1, key2);
 		ResultSet rs2 = stmt2.executeQuery();
 		rs2.next();

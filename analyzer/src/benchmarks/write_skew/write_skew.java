@@ -38,7 +38,7 @@ public class write_skew {
 		int read_val = rs.getInt("VALUE");
 		System.out.println(read_val);
 		// update account 2
-		if (read_val + amount2 < 10 ) {
+		if (read_val + amount2 < 1000 ) {
 			PreparedStatement stmt1 = connect.prepareStatement("UPDATE ACCOUNTS SET value = ?" + " WHERE id = ?");
 			stmt1.setInt(1, amount2);
 			stmt1.setInt(2, key2);
