@@ -48,13 +48,13 @@ public class AnomalyStructure {
 	}
 
 	// TODO
-	public void save() throws IOException  {
-		File oldFile = new File("anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
-		oldFile.delete();
-		FileOutputStream fout;
+	public void save() throws IOException {
+
 		try {
-			fout = new FileOutputStream(
-					"anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
+			File oldFile = new File("anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
+			oldFile.delete();
+			FileOutputStream fout;
+			fout = new FileOutputStream("anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
 			ObjectOutputStream oos = new ObjectOutputStream(fout);
 			oos.writeObject(this.structures);
 			oos.close();
@@ -63,17 +63,23 @@ public class AnomalyStructure {
 			e.printStackTrace();
 		}
 
-
 	}
 
 	// TODO: verify it works correctly
 	@SuppressWarnings("unchecked")
-	public void load() throws IOException, ClassNotFoundException {
-		FileInputStream streamIn = new FileInputStream(
-				"anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
-		ObjectInputStream objectinputstream = new ObjectInputStream(streamIn);
-		this.structures = (List<List<Tuple<String, Tuple<String, String>>>>) objectinputstream.readObject();
-		objectinputstream.close();
+	public void load() throws ClassNotFoundException, IOException {
+
+		FileInputStream streamIn;
+		try {
+			streamIn = new FileInputStream("anomalies/" + ConstantArgs._BENCHMARK_NAME + "/previous_data.anomaly");
+			ObjectInputStream objectinputstream = new ObjectInputStream(streamIn);
+			this.structures = (List<List<Tuple<String, Tuple<String, String>>>>) objectinputstream.readObject();
+			objectinputstream.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public int size() {
