@@ -56,6 +56,12 @@ drive () {
 setup () {
   echo "setting up the clusters and intializing them"
 }
+
+# -----------------------------------------------------------------
+init () {
+  echo "setting up the clusters and intializing them"
+}
+
 # -----------------------------------------------------------------
 clean () {
   rm analyzer/config.properties
