@@ -1,4 +1,4 @@
-### CLOTHO:  Directed Test Generation for Weakly Consistent Database Systems
+## CLOTHO:  Directed Test Generation for Weakly Consistent Database Systems
 CLOTHO is a testing framework for detecting serializability
 violations in (SQL) database-backed Java applications executing on weakly-consistent storage systems. It 
 combines a static analyzer and model checker to generate abstract executions, discover 
