@@ -60,7 +60,6 @@ public class AnomalyStructure {
 			oos.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}
@@ -77,7 +76,6 @@ public class AnomalyStructure {
 			objectinputstream.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}
