@@ -241,7 +241,7 @@ public class Transformer extends BodyTransformer {
 
 		System.out.println("=== Anomalies found:	" + anmlCount);
 		System.out.println("=== Analysis time:		" + modelsTime + " ms");
-		System.out.println("=== Avg Ext. Time:		" + avgExt + " ms");
+		//System.out.println("=== Avg Ext. Time:		" + avgExt + " ms");
 
 	}
 
