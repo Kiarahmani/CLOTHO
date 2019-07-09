@@ -70,7 +70,8 @@
         <java classname="Transformer" failonerror="true" fork="yes">
 		<classpath refid="CLOTHO.classpath"/>
 		<!-- TODO: is hard coded for the system under test-->
-		<sysproperty key="java.library.path" path="/home/clotho/z3/build"/>
+		<!--sysproperty key="java.library.path" path="/home/clotho/z3/build"/-->
+    <sysproperty key="java.library.path" path="/Users/Kiarash/dev/packages/z3/build"/>
         </java>
     </target>
 </project>

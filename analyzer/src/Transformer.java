@@ -229,19 +229,19 @@ public class Transformer extends BodyTransformer {
 	// Print analysis stats
 	private static void printStats(Application app, ArrayList<Table> tables, int anmlCount, long modelsTime,
 			long avgExt) {
-		System.out.println("\n\n\n■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"
-				+ "\n 			     𝐒𝐜𝐡𝐞𝐦𝐚\n"
-				+ "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+		System.out.println("\n------------------------------------------------------"
+				+ "\n 			     Schema\n"
+				+ "------------------------------------------------------");
 		for (Table t : tables)
 			t.printTable();
 		System.out.println();
 		app.printApp();
-		System.out.println("\n\n\n\n================================");
+		System.out.println("\n\n\n\n===========================================");
 		System.out.println("=== AR compile time:	" + (end_fec - start_fec) + "ms");
 
 		System.out.println("=== Anomalies found:	" + anmlCount);
-		System.out.println("=== Analysis time:	" + modelsTime + " ms");
-		System.out.println("=== Avg Ext. Time:	" + avgExt + " ms");
+		System.out.println("=== Analysis time:		" + modelsTime + " ms");
+		System.out.println("=== Avg Ext. Time:		" + avgExt + " ms");
 
 	}
 
