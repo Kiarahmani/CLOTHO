@@ -30,6 +30,25 @@ git clone https://github.com/Kiarahmani/CLOTHO.git
 ```
 Make sure docker daemon is running and current user is added to docker group and has privileges ([read more](https://docs.docker.com/install/linux/linux-postinstall/)). 
 
+### Setup Dependencies
+
+To run clotho, you need to define the following dependencies:
+
+```
+export CLOTHO_RT_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+export CLOTHO_JCE_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar
+```
+Add these two lines to your shell profile (e.g., .bash_profile) to avoid writing them everytime you open a terminal. Note that from OpenJDK11, these two files do not exist. Make sure you are using OpenJDK 8.
+
+Then, install a compatible version of [Z3 Theorem Prover](https://github.com/Z3Prover/z3). Place all the files in the `bin` folder in the release package in a dedicated folder. Then change the file `analyzer/build.xml` to include that particular path.
+
+```
+<!-- TODO: is hard coded for the system under test-->
+<sysproperty key="java.library.path" path="path/to/your/z3/build/bin/"/>
+```
+
+### Setup Cluster
+
 Move to the project directory and run the following command to create a cluster
 of 2 Cassandra nodes each running in a docker container: 
 ``` sh
